@@ -190,6 +190,7 @@ bool CayenneLPPDec::ParseLPP(const uint8_t *pBuffer, size_t Len, Json::Value &ro
 			pBuffer += LPP_BAROMETRIC_PRESSURE_SIZE;
 			Len -= LPP_BAROMETRIC_PRESSURE_SIZE;
 		} 
+#ifdef LPP_UNIXTIME
 		else if (lpp_type == LPP_UNIXTIME) {
 			if (Len < LPP_UNIXTIME_SIZE)
 				return false;
@@ -203,6 +204,7 @@ bool CayenneLPPDec::ParseLPP(const uint8_t *pBuffer, size_t Len, Json::Value &ro
 			pBuffer += LPP_UNIXTIME_SIZE;
 			Len -= LPP_UNIXTIME_SIZE;
 		}
+#endif // LPP_UNIXTIME
 		else if (lpp_type == LPP_GYROMETER) {
 			if (Len < LPP_GYROMETER_SIZE)
 				return false;
